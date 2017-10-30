@@ -1,16 +1,11 @@
-from .compiler import Compiler
 
-
-class JsCompiler(Compiler):
+class JSGrammar:
     """
-    Javascript compiler.
+    Javascript Grammar.
     """
 
+tokens =  <index, main>
 
-def compile(ql, **kwargs):
-    """
-    Compiles quick lambda object to Javascript.
-    """
 
-    compiler = JsCompiler(ql)
-    return compiler.compile(**kwargs)
+
+
