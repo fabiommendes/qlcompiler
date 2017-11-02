@@ -6,7 +6,30 @@ class JsCompiler(Compiler):
     Javascript compiler.
     """
 
-    tokens_list = ['NUMBERS', 'STRINGS', 'BOOLEAN', 'OPERATORS']
+    tokens_list = [
+        'NUMBERS',
+        'STRINGS',
+        'BOOLEAN',
+        'OPERATORS',
+        'COND_IF',
+        'COND_ELIF',
+        'COND_ELSE',
+        'LOOP_FOR',
+        'LOOP_WHILE',
+        'COLON',
+        'BO_EQUAL',
+        'BO_BIGGER',
+        'BO_BIGGER_EQUAL',
+        'BO_LOWER',
+        'BO_LOWER_EQUAL',
+        'LO_NOT',
+        'LO_AND',
+        'LO_OR',
+        'VARIABLE',
+        'RW_IN',
+        'RW_IS',
+        'RW_RANGE'
+    ]
 
     def js_lexer:
         lexer = ox.make_lexer([
