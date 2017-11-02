@@ -6,14 +6,27 @@ class JsCompiler(Compiler):
     Javascript compiler.
     """
 
-    tokens_list = ['NUMBERS', 'STRINGS', 'BOOLEAN', 'OPERATORS']
+    tokens_list = [
+        'NUMBER',
+        'STRINGS',
+        'BOOLEAN',
+        'ATRIB_OP',
+        'SIMPLE_OP',
+        'MUL_OP',
+        'BREAKLINE',
+        'INDENT',
+        ]
 
     def js_lexer:
         lexer = ox.make_lexer([
-            ('NUMBERS', r'[+-]?\d+(?:\.\d+)'),
-            ('STRINGS', r'^([\'|\"]{1})+(?:(\w+|\W+|\d+|\D+|\s+|\S+|))+([\'|\"]{1})$'),
-            ('BOOLEAN', r'(\Atrue)|(\Afalse)'),
-            ('OPERATORS', r'[+\-*/%\|\&]'),
+            ('NUMBER', r'[+-]?\d+(?:\.\d+)'),
+            ('STRING', r'^([\'|\"]{1})+(?:(\w+|\W+|\d+|\D+|\s+|\S+|))+([\'|\"]{1})$'),
+            ('BOOLEAN', r'(\ATrue)|(\AFalse)'),
+            ('ATRIB_OP', r'[\={1}]'),
+            ('SIMPLE_OP', r'[-+]'),
+            ('MUL_OP', r'[*/]'),
+            ('BREAKLINE', r'[\n\r]'),
+            ('INDENT', r'[\t]'),
         ])
         return lexer
 
