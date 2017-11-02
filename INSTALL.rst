@@ -7,7 +7,7 @@ Quick Lambda Compiler can be installed using pip::
     $ python -m pip install Quick Lambda Compiler
 
 This command will fetch the archive and its dependencies from the internet and
-install them. 
+install them.
 
 If you've downloaded the tarball, unpack it, and execute::
 
@@ -37,7 +37,7 @@ command
 
 ::
 
-    $ git clonte 
+    $ git clone 
 
 After cloning, install the dependencies with::
 

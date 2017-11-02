@@ -27,8 +27,8 @@ setup(
     version=version,
     author='Fábio Macêdo Mendes',
     author_email='fabiomacedomendes@gmail.com',
-    url='',
-    description='A short description for your project.',
+    url='https://github.com/fabiommendes/qlcompiler',
+    description='The quick lambda compiler takes quick lambda objects from sidekick and compiles them either to Python, C or Javascript code.',
     long_description=codecs.open('README.rst', 'rb', 'utf8').read(),
 
     # Classifiers (see https://pypi.python.org/pypi?%3Aaction=list_classifiers)
@@ -42,6 +42,7 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries',
     ],
 
@@ -53,6 +54,9 @@ setup(
     extras_require={
         'dev': [
             'python-boilerplate[dev]',
+            'pytest-cov',
+            'invoke',
+            'manuel',
         ],
     },
 
