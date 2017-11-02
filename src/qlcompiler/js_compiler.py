@@ -19,7 +19,19 @@ class JsCompiler(Compiler):
             ('COND_ELSE', r'^\s*else'),
             ('LOOP_FOR', r'^\s*for'),
             ('LOOP_WHILE', r'^\s*while'),
-            ('COLON', r'(:{1})$')
+            ('COLON', r':$'),
+            ('BO_EQUAL', r'=='),
+            ('BO_BIGGER', r'>'),
+            ('BO_BIGGER_EQUAL', r'>='),
+            ('BO_LOWER', r'<'),
+            ('BO_LOWER_EQUAL', r'<='),
+            ('LO_NOT', r'(not)'),
+            ('LO_AND', r'(and)'),
+            ('LO_OR', r'(or)'),
+            ('VARIABLE', r'([a-zA-Z]|_)\w+'),
+            ('RW_IN', r'(in)'),
+            ('RW_IS', r'(is)'),
+            ('RW_RANGE', r'(range)')
         ])
         return lexer
 
