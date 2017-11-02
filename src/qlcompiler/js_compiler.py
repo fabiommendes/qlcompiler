@@ -14,6 +14,12 @@ class JsCompiler(Compiler):
             ('STRINGS', r'^([\'|\"]{1})+(?:(\w+|\W+|\d+|\D+|\s+|\S+|))+([\'|\"]{1})$'),
             ('BOOLEAN', r'(\Atrue)|(\Afalse)'),
             ('OPERATORS', r'[+\-*/%\|\&]'),
+            ('COND_IF', r'^\s*if'),
+            ('COND_ELIF', r'^\s*elif'),
+            ('COND_ELSE', r'^\s*else'),
+            ('LOOP_FOR', r'^\s*for'),
+            ('LOOP_WHILE', r'^\s*while'),
+            ('COLON', r'(:{1})$')
         ])
         return lexer
 
