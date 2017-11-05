@@ -6,17 +6,19 @@ class JsCompiler(Compiler):
     Javascript compiler.
     """
 
-    # Tokens
-
-    tokens_list = ['NUMBERS', 'STRINGS', 'BOOLEAN', 'OPERATORS', 'FUNCTIONS', 'CONDITIONALS']
+    # Lexer
+    
+    tokens_list = ['NUMBERS', 'STRINGS', 'BOOLEAN', 'OPERATORS', 'CONDITIONALS']
 
     def js_lexer:
         lexer = ox.make_lexer([
             ('NUMBERS', r'[+-]?\d+(?:\.\d+)'),
             ('STRINGS', r'^([\'|\"]{1})+(?:(\w+|\W+|\d+|\D+|\s+|\S+|))+([\'|\"]{1})$'),
-            ('BOOLEAN', r'(\Atrue)|(\Afalse)'),
+            ('BOOLEAN', r'(\ATrue)|(\AFalse)'),
             ('OPERATORS', r'[+\-*/%\|\&]'),
+            ('CONDITIONALS', r'(\Aif)|(\Aelif)|(\Aelse)'),
         ])
+
         return lexer
 
     # Parser
@@ -30,11 +32,36 @@ class JsCompiler(Compiler):
         
         return parser
 
+    # Parse Operators
+
+    OPERATORS = {
+        '+': lambda x, y: x + y,
+        '-': lambda x, y: x - y,
+        '*': lambda x, y: x * y,
+        '/': lambda x, y: x / y,
+    }
+
     # Parser Operations
 
+    def parse_booleans(binary): 
+        if binary:
+            binary = 'true'
+        else:
+            binary = 'false'
     
+        return binary
 
+    def parse_operations(first_value, second_value, operator):
 
+        if operator == '+' || operator == '-' || operator == '*' || operator == '/':
+            return binary_operator(first_value, operator, second_value)            
+ 
+    def binary_operator (first_value, second_value, operator):
+        return OPERATORS[operator](first_value, second_value)
+   
+    def parse_expressions(statements):
+        return "Some expression in JS"
+    
 
 
 def compile(ql, **kwargs):
