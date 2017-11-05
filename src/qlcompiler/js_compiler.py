@@ -6,7 +6,9 @@ class JsCompiler(Compiler):
     Javascript compiler.
     """
 
-    tokens_list = ['NUMBERS', 'STRINGS', 'BOOLEAN', 'OPERATORS']
+    # Tokens
+
+    tokens_list = ['NUMBERS', 'STRINGS', 'BOOLEAN', 'OPERATORS', 'FUNCTIONS', 'CONDITIONALS']
 
     def js_lexer:
         lexer = ox.make_lexer([
@@ -16,6 +18,23 @@ class JsCompiler(Compiler):
             ('OPERATORS', r'[+\-*/%\|\&]'),
         ])
         return lexer
+
+    # Parser
+
+    def js_parser(tokens):
+        parser = ox.make_parser([
+            ('term : term OP atom', binop),
+            ('term : atom', lambda x: x), 
+            ('atom : NUMBER', float), 
+        ], tokens)
+        
+        return parser
+
+    # Parser Operations
+
+    
+
+
 
 
 def compile(ql, **kwargs):
