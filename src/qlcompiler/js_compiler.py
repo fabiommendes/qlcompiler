@@ -1,4 +1,4 @@
-from .compiler import Compiler
+from compiler import Compiler
 import ox
 
 class JsCompiler(Compiler):
@@ -9,10 +9,14 @@ class JsCompiler(Compiler):
     # Lexer
 
     tokens_list = [
-        'NUMBERS',
+        'NUMBER',
         'STRINGS',
         'BOOLEAN',
-        'OPERATORS',
+        'ATRIB_OP',
+        'SIMPLE_OP',
+        'MUL_OP',
+        'BREAKLINE',
+        'INDENT',
         'COND_IF',
         'COND_ELIF',
         'COND_ELSE',
@@ -33,12 +37,16 @@ class JsCompiler(Compiler):
         'RW_RANGE'
     ]
 
-    def js_lexer:
+    def js_lexer():
         lexer = ox.make_lexer([
-            ('NUMBERS', r'[+-]?\d+(?:\.\d+)'),
-            ('STRINGS', r'^([\'|\"]{1})+(?:(\w+|\W+|\d+|\D+|\s+|\S+|))+([\'|\"]{1})$'),
+            ('NUMBER', r'[+-]?\d+(?:\.\d+)'),
+            ('STRING', r'^([\'|\"]{1})+(?:(\w+|\W+|\d+|\D+|\s+|\S+|))+([\'|\"]{1})$'),
             ('BOOLEAN', r'(\ATrue)|(\AFalse)'),
-            ('OPERATORS', r'[+\-*/%\|\&]'),
+            ('ATRIB_OP', r'[\={1}]'),
+            ('SIMPLE_OP', r'[-+]'),
+            ('MUL_OP', r'[*/]'),
+            ('BREAKLINE', r'[\n\r]'),
+            ('INDENT', r'[\t]'),
             ('COND_IF', r'^\s*if'),
             ('COND_ELIF', r'^\s*elif'),
             ('COND_ELSE', r'^\s*else'),
