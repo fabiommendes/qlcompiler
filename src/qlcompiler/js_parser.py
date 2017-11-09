@@ -1,6 +1,5 @@
  import ox
 
-
 class JSParser():
 
     '''
@@ -11,7 +10,12 @@ class JSParser():
         parser = ox.make_parser([
             ('term : term OP atom', binop),
             ('term : atom', lambda x: x), 
-            ('atom : NUMBER', float), 
+            ('atom: INDENT', parse_booleans), 
+            ('atom: BREAKLINE', lambda x: x),
+            ('atom: ATRIB_OP', lambda x: x),
+            ('atom: BOOLEAN', parse_booleans), 
+            ('atom: STRINGS', lambda x: str(x)), 
+            ('atom: NUMBER', lambda x: float(x))
         ], tokens)
         
         return parser
