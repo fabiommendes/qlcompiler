@@ -2,15 +2,19 @@
 
 class JSParser():
 
+
+    # Quick lambdas
+    # >>> inc = fn(_ + 1)
+    # >>> total_cost = fn(_.num_items * _.price)
+
     '''
        A Parser to emit js code from python 
     '''
 
     def js_parser(tokens):
         parser = ox.make_parser([
-            ('term : term OP atom', binop),
+            ('term : term OP atom', binary_operator),
             ('term : atom', lambda x: x), 
-            ('atom: INDENT', parse_booleans), 
             ('atom: BREAKLINE', lambda x: x),
             ('atom: ATRIB_OP', lambda x: x),
             ('atom: BOOLEAN', parse_booleans), 
@@ -48,8 +52,13 @@ class JSParser():
     def binary_operator (first_value, second_value, operator):
         return OPERATORS[operator](first_value, second_value)
    
-   
     # Backlog
 
     def parse_expressions(statements):
         return "Some expression in JS"
+
+    # Evaluate
+
+    def evaluate(tree): 
+
+   

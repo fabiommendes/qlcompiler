@@ -7,7 +7,6 @@ class JsCompiler(Compiler):
     Javascript compiler.
     """
     # Lexer
-
     tokens_list = [
         'NUMBER',
         'STRINGS',
@@ -37,6 +36,8 @@ class JsCompiler(Compiler):
         'RW_RANGE'
     ]
 
+
+    # List and Dictionary : To Map Sidekick - Backlog   
     def js_lexer():
         lexer = ox.make_lexer([
             ('NUMBER', r'[+-]?\d+(?:\.\d+)'),
@@ -45,12 +46,12 @@ class JsCompiler(Compiler):
             ('ATRIB_OP', r'[\={1}]'),
             ('SIMPLE_OP', r'[-+]'),
             ('MUL_OP', r'[*/]'),
-            ('BREAKLINE', r'[\n\r]'),
-            ('INDENT', r'[\t]'),
-            ('COND_IF', r'^\s*if'),
-            ('COND_ELIF', r'^\s*elif'),
-            ('COND_ELSE', r'^\s*else'),
-            ('LOOP_FOR', r'^\s*for'),
+            ('BREAKLINE', r'[\n\r]'), #
+            ('INDENT', r'[\t]'), #
+            ('COND_IF', r'^\s*if') #,
+            ('COND_ELIF', r'^\s*elif'), #
+            ('COND_ELSE', r'^\s*else'), #
+            ('LOOP_FOR', r'^\s*for'), 
             ('LOOP_WHILE', r'^\s*while'),
             ('COLON', r':$'),
             ('BO_EQUAL', r'=='),
@@ -58,7 +59,7 @@ class JsCompiler(Compiler):
             ('BO_BIGGER_EQUAL', r'>='),
             ('BO_LOWER', r'<'),
             ('BO_LOWER_EQUAL', r'<='),
-            ('LO_NOT', r'(not)'),
+            ('LO_NOT', r'(not)'), 
             ('LO_AND', r'(and)'),
             ('LO_OR', r'(or)'),
             ('VARIABLE', r'([a-zA-Z]|_)\w+'),
