@@ -1,1 +1,4 @@
 -e .
+flake8
+ox-parser
+Sidekick
